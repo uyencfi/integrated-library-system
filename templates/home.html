@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active"><a href="{% url 'home' %}">Home</a></li>
+{% endblock %}
+
+{% block content %}
+  <h1>All books</h1>
+  
+  <div class="mb-4">
+    <a href="{% url 'search' %}" class="btn btn-primary">Search books</a>
+  </div>
+
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Book</th>
+        <th>Year</th>
+        <th>Category</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+        <tr>
+          <td>
+            <a href="{% url 'book_details' book.book_id %}">{{ book.title }}</a>
+            <!-- <small class="text-muted d-block">{{ book.book_id }}</small> -->
+          </td>
+          <td class="align-middle">{% if book.yearIndex == -1 %}N.A.{% else %}{{ book.yearIndex }}{% endif %}</td>
+          <td class="align-middle">{{ book.categories }}</td>
+          <td class="align-middle">
+            {% if book.desc %} {{ book.desc }}
+            {% else %} {{ book.descLong }}
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+

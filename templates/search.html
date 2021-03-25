@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Search{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active">Search</li>
+{% endblock %}
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="form-group">
+        {{ field.label_tag }}
+
+        {% if form.is_bound %}
+          {% if field.errors %}
+
+            {% render_field field class="form-control is-invalid" %}
+            {% for error in field.errors %}
+              <div class="invalid-feedback">
+                {{ error }}
+              </div>
+            {% endfor %}
+
+          {% else %}
+            {% render_field field class="form-control is-valid" %}
+          {% endif %}
+        {% else %}
+          {% render_field field class="form-control" %}
+        {% endif %}
+
+        {% if field.help_text %}
+          <small class="form-text text-muted">
+            {{ field.help_text }}
+          </small>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success">Search</button>
+  </form>
+
+  <!-- Search result will be rendered on this same template as the initial search form!! -->
+  {% if not result %}<p style="color:red;">No matching results.</p>
+  {% elif result != 'GET' %}
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Book</th>
+          <th>Year</th>
+          <th>Category</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in result %}
+          <tr>
+            <td>
+              <a href="{% url 'book_details' book.book_id %}">{{ book.title }}</a>
+              <!-- <small class="text-muted d-block">{{ book.book_id }}</small> -->
+            </td>
+            <td class="align-middle">{% if book.yearIndex == -1 %}N.A.{% else %}{{ book.yearIndex }}{% endif %}</td>
+            <td class="align-middle">{{ book.categories }}</td>
+            <td class="align-middle">
+              {% if book.desc %} {{ book.desc }}
+              {% else %} {{ book.descLong }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+
+{% endblock %}

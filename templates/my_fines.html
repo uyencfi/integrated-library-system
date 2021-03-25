@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}My fines{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active">My fines</li>
+{% endblock %}
+
+{% block content %}
+  <h3>My fines</h2>
+  <h2>$ {{ amount }}</h2>
+  <h4>Payment history:</h4>
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Transaction date</th>
+        <th>Amount</th>
+        <th>Card type</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in payment_history.all %}
+        <tr>
+          <td class="align-middle">{{ p.transaction_time }}</td>
+          <td class="align-middle">{{ p.amount }}</td>
+          <td class="align-middle">{{ p.card }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="mb-4">
+    <a href="{% url 'make_payment' %}" class="btn btn-primary">Pay fines</a>
+  </div>
+{% endblock %}

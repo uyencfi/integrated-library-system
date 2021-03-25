@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}My books{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active">My books</li>
+{% endblock %}
+
+
+{% block content %}
+  <!--
+  <div class="mb-4">
+    <a href="#" class="btn btn-primary">Return books</a>
+    <a href="#" class="btn btn-outline-secondary" role="button">Extend books</a>
+  </div> -->
+
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Book</th>
+        <th>Status</th>
+        <th>Due date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in my_borrow %}
+        <tr>
+          <td class="align-middle"><a href="{% url 'book_details' book.b.book_id %}">{{ book.title }}</a></td>
+          <td class="align-middle">
+            {% if book.b.is_overdue %}Overdue
+            {% else %}Borrowing
+            {% endif %}
+          </td>
+          <td class="align-middle">{{ book.b.due_date }}</td>
+          <td class="align-middle">
+            <div class="mb-4">
+              <a href="{% url 'return' book.b.book_id %}" class="btn btn-primary">Return</a>
+              <a href="{% url 'extend' book.b.book_id %}" class="btn btn-outline-secondary" role="button">Extend</a>
+            </div>  
+          </td>
+        </tr>
+      {% endfor %}
+      {% for book in my_reserve %}
+        <tr>
+          <td class="align-middle"><a href="{% url 'book_details' book.b.book_id %}">{{ book.title }}</a></td>
+          <td class="align-middle">Reserving</td>
+          <td class="align-middle">{{ book.b.reserve_due_date }}</td>
+          <td class="align-middle">
+            {% if book.b.reserve_due_date or not book.b.borrower_id %}
+            <a href="{% url 'book_details' book.b.book_id %}" class="btn btn-primary">Borrow</a>
+            {% else %} Not available yet.
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
+

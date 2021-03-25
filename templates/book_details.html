@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Book details{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active">{{ mgbook.book_id }}-{{ mgbook.title }}</li>
+{% endblock %}
+
+{% block content %}
+
+  <h1>{{ mgbook.title }}</h1>
+  {% if user.is_authenticated %}
+    <!-- <div style="display:none;">{{ msg }}</div> -->
+    <p style="background-color:powderblue; color:red;">{{ msg }}</p>
+    <div class="mb-4">
+      {% if can_b %}
+        <a href="{% url 'borrow' mgbook.book_id %}" class="btn btn-primary">Borrow</a>
+      {% elif can_r %}
+        <a href="{% url 'reserve' mgbook.book_id %}" class="btn btn-primary">Reserve</a>
+      {% elif s_r %}
+        <a href="{% url 'special_reserve' mgbook.book_id %}" class="btn btn-primary">Special reserve</a>
+      {% endif %}
+    </div>
+  {% endif %}
+  <ul>
+    <li><strong>Year</strong>: {% if mgbook.yearIndex == -1 %}N.A.{% else %}{{ mgbook.yearIndex }}{% endif %}</li>
+    <li><strong>Authors</strong>: {{ mgbook.authors }}</li>
+    <li><strong>Page Count</strong>: {% if mgbook.pages %}{{ mgbook.pages }}{% else %}N.A.{% endif %}</li>
+    <li><strong>ISBN</strong>: {{ mgbook.isbn }}</li>
+    <li><strong>Categories</strong>: {{ mgbook.categories }}</li>
+    <li><strong>Description</strong>: {{ mgbook.descLong }}</li>
+  </ul>
+
+  <!-- For debug/testing purposes -->
+  <h2>Status</h2>
+  <ul>
+    <li>Borrower: {{ sqlbook.borrower_id }}</li>
+    <li>Reserver: {{ sqlbook.reserver_id }}</li>
+  </ul>
+{% endblock %}
