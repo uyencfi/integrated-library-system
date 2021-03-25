@@ -20,14 +20,3 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
-
-# User's account profile view
-@method_decorator(login_required, name='dispatch')
-class UserUpdateView(UpdateView):
-    model = User
-    fields = ('first_name', 'last_name', 'email', )
-    template_name = 'my_account.html'
-    success_url = reverse_lazy('my_account')
-
-    def get_object(self):
-        return self.request.user
