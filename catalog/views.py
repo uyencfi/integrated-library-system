@@ -242,7 +242,7 @@ def make_payment(request):
             messages.success(request, f'You successfully paid ${payment.amount}.')
             return redirect('my_fines')
         else:
-            messages.warning(request, "Minimum amount is $ 0.1!")
+            messages.warning(request, "Please select a payment type! Minimum amount is $ 0.1!")
     else:
         form = MakePaymentForm()
     return render(request, 'make_payment.html', {'form': form})
