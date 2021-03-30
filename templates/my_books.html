@@ -25,7 +25,7 @@
       <tr>
         <th>Book</th>
         <th>Status</th>
-        <th>Due date</th>
+        <th>Due Date</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -41,8 +41,8 @@
           <td class="align-middle">{{ book.b.due_date }}</td>
           <td class="align-middle">
             <div class="mb-4">
-              <a href="{% url 'return' book.b.book_id %}" class="btn btn-primary">Return</a>
-              <a href="{% url 'extend' book.b.book_id %}" class="btn btn-outline-secondary" role="button">Extend</a>
+              <a href="{% url 'return' book.b.book_id %}" class="btn login-btn">Return</a>
+              <a href="{% url 'extend' book.b.book_id %}" class="btn signup-btn" role="button">Extend</a>
             </div>  
           </td>
         </tr>
@@ -54,7 +54,7 @@
           <td class="align-middle">{{ book.b.reserve_due_date }}</td>
           <td class="align-middle">
             {% if book.b.reserve_due_date or not book.b.borrower_id %}
-            <a href="{% url 'book_details' book.b.book_id %}" class="btn btn-primary">Borrow</a>
+            <a href="{% url 'book_details' book.b.book_id %}" class="btn login-btn">Borrow</a>
             {% else %} Not available yet.
             {% endif %}
           </td>

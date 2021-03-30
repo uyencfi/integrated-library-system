@@ -10,7 +10,7 @@ body {
 }
 
 .navbar-brand{
-  font-family: 'Luminari', fantasy;
+  font-family: 'Anton';
   color: black;
 }
 
@@ -45,4 +45,12 @@ body {
   background-color: #e799ffb4;
   color: white;
   border-color: #e799ffb4;
+}
+
+.message {
+  color: #e48383;
+}
+
+.radio {
+  margin-top: 0.2cm;
 }

@@ -9,5 +9,6 @@ class SearchForm(forms.Form):
 
 class MakePaymentForm(forms.Form):
     CHOICES = [('credit','Credit'), ('debit','Debit')]
-    card_type = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
+    card_type = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio_1'}))
+    # radio = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio_1'}))
     amount = forms.FloatField(label='Amount', min_value=0.1)

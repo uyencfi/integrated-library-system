@@ -27,17 +27,17 @@
                     {{ user.username }}
                   </a>
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-                    <a class="dropdown-item" href="{% url 'my_books' %}">My books</a>
-                    <a class="dropdown-item" href="{% url 'my_fines' %}">My fines</a>
+                    <a class="dropdown-item" href="{% url 'my_books' %}">My Books</a>
+                    <a class="dropdown-item" href="{% url 'my_fines' %}">My Fines</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
                   </div>
                 </li>
               </ul>
             {% else %}
               <form class="form-inline ml-auto">
-                <a href="{% url 'login' %}" class="btn login-btn">Log in</a>
-                <a href="{% url 'signup' %}" class="btn signup-btn">Sign up</a>
+                <a href="{% url 'login' %}" class="btn login-btn">Log In</a>
+                <a href="{% url 'signup' %}" class="btn signup-btn">Sign Up</a>
               </form>
             {% endif %}
           </div>

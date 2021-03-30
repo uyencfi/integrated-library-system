@@ -1,18 +1,20 @@
 {% extends 'base_accounts.html' %}
 
+{% block title %}Log In{% endblock %}
+
 {% block content %}
    <div class="row justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-8">
       <div class="user_card">
         <div class="card-body">
           <div class="d-flex justify-content-center">
-			<h3 id="form-title">LOGIN</h3>
+			<h4 id="form-title">Welcome!</h4>
 		  </div>
           <form method="post" novalidate>
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}">
             {% include 'includes/form.html' %}
-            <button class="btn login_btn" type="submit" class="btn btn-primary btn-block">Log in</button>
+            <button class="btn login_btn" type="submit" class="btn btn-primary btn-block">Log In</button>
 			{% comment %} <div class="d-flex justify-content-center mt-3 login_container">
 				<input class="btn login_btn" type="submit" value="Login">
 			</div>  {% endcomment %}
@@ -20,7 +22,7 @@
           </form>
         </div>
         <div class="card-footer text-muted text-center">
-          New to ILS? <a href="{% url 'signup' %}">Sign up</a>
+          New to ILS? <a href="{% url 'signup' %}">Sign Up</a>
         </div>
       </div>
     </div>

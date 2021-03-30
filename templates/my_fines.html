@@ -4,23 +4,23 @@
 
 {% block stylesheet %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
 
-{% block title %}My fines{% endblock %}
+{% block title %}My Fines{% endblock %}
 
 {% block breadcrumb %}
   <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-  <li class="breadcrumb-item active">My fines</li>
+  <li class="breadcrumb-item active">My Fines</li>
 {% endblock %}
 
 {% block content %}
-  <h3>My fines</h2>
+  <h3>My Fines</h2>
   <h2>$ {{ amount }}</h2>
-  <h4>Payment history:</h4>
+  <h4>Payment History:</h4>
   <table class="table">
     <thead class="thead-inverse">
       <tr>
-        <th>Transaction date</th>
+        <th>Transaction Date</th>
         <th>Amount</th>
-        <th>Card type</th>
+        <th>Card Type</th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +35,6 @@
   </table>
 
   <div class="mb-4">
-    <a href="{% url 'make_payment' %}" class="btn btn-primary">Pay fines</a>
+    <a href="{% url 'make_payment' %}" class="btn login-btn">Pay Fines</a>
   </div>
 {% endblock %}

@@ -127,27 +127,27 @@ def check_eligibility(user, book):
     if user.loans.all().count() == 4:
         msg = "You have reached the 4 book limit."
         if book.borrower_id == user:
-            msg += " Also, you are borrowing this book!"
+            msg += " This book is yours! Don't forget to return it on time."
         elif book.reserver_id == user:
-            msg += " Also, you are reserving this book!"
+            msg += " This book has been reserved for you!"
         elif book.reserver_id and book.reserver_id != user:
-            msg += " No special reserve, as this book has been reserved."
+            msg += " This book has already been reserved."
         else:
             s_r = True
-            msg = " This book can be reserved. You can do SPECIAL RESERVE."
+            msg = " You are allowed to reserve this book for only one week. Would you like to proceed?"
     elif book.borrower_id:
         if book.borrower_id == user:
-            msg = "You are already borrowing this book."
+            msg = "This book is already yours!"
         elif book.reserver_id == user:
-            msg = "You are already reserving this book."
+            msg = "You are already reserving this book!"
         elif book.reserver_id != None:
             msg = "Sorry, this book has been borrowed and reserved."
         else:
             can_r = True
-            msg = "This book has been borrowed by someone else but you can reserve it."
+            msg = "This book has been borrowed by someone else. Would you like to reserve it?"
     else:
         can_b = True
-        msg = "You can borrow this book."
+        msg = "Would you like to borrow this book?"
     return (can_b, can_r, s_r, msg)
 
 def book_details(request, book_id):
@@ -241,6 +241,8 @@ def make_payment(request):
             curr_fine.save()
             messages.success(request, f'You successfully paid ${payment.amount}.')
             return redirect('my_fines')
+        else:
+            messages.warning(request, "Minimum amount is $ 0.1!")
     else:
         form = MakePaymentForm()
     return render(request, 'make_payment.html', {'form': form})

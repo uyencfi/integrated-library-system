@@ -4,7 +4,7 @@
 
 {% block stylesheet %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
 
-{% block title %}Book details{% endblock %}
+{% block title %}Book Details{% endblock %}
 
 {% block breadcrumb %}
   <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
@@ -23,7 +23,7 @@
       {% elif can_r %}
         <a href="{% url 'reserve' mgbook.book_id %}" class="btn signup-btn">Reserve</a>
       {% elif s_r %}
-        <a href="{% url 'special_reserve' mgbook.book_id %}" class="btn signup-btn">Special reserve</a>
+        <a href="{% url 'special_reserve' mgbook.book_id %}" class="btn signup-btn">Special Reserve</a>
       {% endif %}
     </div>
   {% endif %}
@@ -37,9 +37,9 @@
   </ul>
 
   <!-- For debug/testing purposes -->
-  <h2>Status</h2>
+  {% comment %} <h2>Status</h2>
   <ul>
     <li>Borrower: {{ sqlbook.borrower_id }}</li>
     <li>Reserver: {{ sqlbook.reserver_id }}</li>
-  </ul>
+  </ul> {% endcomment %}
 {% endblock %}

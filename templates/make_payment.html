@@ -1,53 +1,45 @@
 {% extends 'base.html' %}
 
-{% load widget_tweaks %}
-
 {% load static %}
 
 {% block stylesheet %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
 
-{% block title %}Make payment{% endblock %}
+{% block title %}Make Payment{% endblock %}
 
 {% block breadcrumb %}
   <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-  <li class="breadcrumb-item"><a href="{% url 'my_fines' %}">My fines</a></li>
-  <li class="breadcrumb-item active">Make payment</li>
+  <li class="breadcrumb-item"><a href="{% url 'my_fines' %}">My Fines</a></li>
+  <li class="breadcrumb-item active">Make Payment</li>
 {% endblock %}
+
+{% include 'messages.html'%}
 
 {% block content %}
   <form method="post" novalidate>
     {% csrf_token %}
-
-    {% for field in form %}
-      <div class="form-group">
-        {{ field.label_tag }}
-
-        {% if form.is_bound %}
-          {% if field.errors %}
-
-            {% render_field field class="form-control is-invalid" %}
-            {% for error in field.errors %}
-              <div class="invalid-feedback">
-                {{ error }}
-              </div>
-            {% endfor %}
-
-          {% else %}
-            {% render_field field class="form-control is-valid" %}
-          {% endif %}
-        {% else %}
-          {% render_field field class="form-control" %}
-        {% endif %}
-
-        {% if field.help_text %}
-          <small class="form-text text-muted">
-            {{ field.help_text }}
-          </small>
-        {% endif %}
+    <div>
+      <label style="font-weight:bold;" for="id_card_type_0">Card Type:</label>
+        <ul style="list-style-type:none;background-color:ghostwhite;" id="id_card_type" class="form-control">
+          <li class="radio">
+            <label for="id_card_type_0">
+            <input type="radio" name="card_type" value="credit" required="" id="id_card_type_0">
+              Credit
+            </label>
+          </li>
+          <li class="radio">
+            <label for="id_card_type_1">
+            <input type="radio" name="card_type" value="debit" required="" id="id_card_type_1">
+              Debit
+            </label>
+          </li>
+        </ul> 
       </div>
-    {% endfor %}
-
-    <button type="submit" class="btn btn-success">Pay</button>
-    <a href="{% url 'my_fines' %}" class="btn btn-outline-secondary" role="button">Cancel</a>
+    
+      <div class="form-group">
+        <label for="id_amount"><b>Amount:</label>
+          <input style="background-color:ghostwhite;" type="number" name="amount" min="0.1" step="any" class="form-control" required="" id="id_amount">
+      </div>    
+    <button type="submit" class="btn login-btn">Pay</button>
+    <a href="{% url 'my_fines' %}" class="btn signup-btn" role="button">Cancel</a>
   </form>
 {% endblock %}

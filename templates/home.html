@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-  <h1>All books</h1>
+  <h1>All Books</h1>
   
   <div class="mb-4">
     <a href="{% url 'search' %}" class="btn enter-btn">Search Books</a>
@@ -31,9 +31,9 @@
             <a href="{% url 'book_details' book.book_id %}">{{ book.title }}</a>
             <!-- <small class="text-muted d-block">{{ book.book_id }}</small> -->
           </td>
-          <td class="align-middle">{% if book.yearIndex == -1 %}N.A.{% else %}{{ book.yearIndex }}{% endif %}</td>
-          <td class="align-middle">{{ book.categories }}</td>
-          <td class="align-middle">
+          <td class="">{% if book.yearIndex == -1 %}N.A.{% else %}{{ book.yearIndex }}{% endif %}</td>
+          <td class="">{{ book.categories }}</td>
+          <td class="">
             {% if book.desc %} {{ book.desc }}
             {% else %} {{ book.descLong }}
             {% endif %}
