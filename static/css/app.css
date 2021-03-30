@@ -3,12 +3,12 @@ body {
   }
   
   .navbar{
-	color: white;
+	color: black;
 	background-color: #aad3f0;
   }
   .navbar-brand {
 	font-family: 'Luminari', fantasy;
-  	color: white;
+  	color: black;
   }
   
   .btn {
@@ -30,5 +30,5 @@ body {
 	text-align: center;
 	background-color: #b8cdff;
 	margin-top: 10%;
-	color: white;
+	color: black;
   }

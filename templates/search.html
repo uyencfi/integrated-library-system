@@ -15,6 +15,38 @@
 {% endblock %}
 
 {% block content %}
+<!-- Search result will be rendered on this same template as the initial search form!! -->
+  {% if not result %}<p class="message">No matching results.</p>
+  {% elif result != 'GET' %}
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Book</th>
+          <th>Year</th>
+          <th>Category</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for book in result %}
+          <tr>
+            <td>
+              <a href="{% url 'book_details' book.book_id %}">{{ book.title }}</a>
+              <!-- <small class="text-muted d-block">{{ book.book_id }}</small> -->
+            </td>
+            <td class="align-middle">{% if book.yearIndex == -1 %}N.A.{% else %}{{ book.yearIndex }}{% endif %}</td>
+            <td class="align-middle">{{ book.categories }}</td>
+            <td class="align-middle">
+              {% if book.desc %} {{ book.desc }}
+              {% else %} {{ book.descLong }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+  
   <form method="post" novalidate>
     {% csrf_token %}
 
@@ -47,39 +79,8 @@
       </div>
     {% endfor %}
 
-    <button type="submit" class="btn btn-success">Search</button>
+    <button type="submit" class="btn enter-btn">Search</button>
   </form>
 
-  <!-- Search result will be rendered on this same template as the initial search form!! -->
-  {% if not result %}<p style="color:red;">No matching results.</p>
-  {% elif result != 'GET' %}
-    <table class="table">
-      <thead class="thead-inverse">
-        <tr>
-          <th>Book</th>
-          <th>Year</th>
-          <th>Category</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for book in result %}
-          <tr>
-            <td>
-              <a href="{% url 'book_details' book.book_id %}">{{ book.title }}</a>
-              <!-- <small class="text-muted d-block">{{ book.book_id }}</small> -->
-            </td>
-            <td class="align-middle">{% if book.yearIndex == -1 %}N.A.{% else %}{{ book.yearIndex }}{% endif %}</td>
-            <td class="align-middle">{{ book.categories }}</td>
-            <td class="align-middle">
-              {% if book.desc %} {{ book.desc }}
-              {% else %} {{ book.descLong }}
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  {% endif %}
-
+  
 {% endblock %}

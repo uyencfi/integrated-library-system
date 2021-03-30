@@ -16,14 +16,14 @@
   <h1>{{ mgbook.title }}</h1>
   {% if user.is_authenticated %}
     <!-- <div style="display:none;">{{ msg }}</div> -->
-    <p style="background-color:powderblue; color:red;">{{ msg }}</p>
+    <p class="message">{{ msg }}</p>
     <div class="mb-4">
       {% if can_b %}
-        <a href="{% url 'borrow' mgbook.book_id %}" class="btn btn-primary">Borrow</a>
+        <a href="{% url 'borrow' mgbook.book_id %}" class="btn login-btn">Borrow</a>
       {% elif can_r %}
-        <a href="{% url 'reserve' mgbook.book_id %}" class="btn btn-primary">Reserve</a>
+        <a href="{% url 'reserve' mgbook.book_id %}" class="btn signup-btn">Reserve</a>
       {% elif s_r %}
-        <a href="{% url 'special_reserve' mgbook.book_id %}" class="btn btn-primary">Special reserve</a>
+        <a href="{% url 'special_reserve' mgbook.book_id %}" class="btn signup-btn">Special reserve</a>
       {% endif %}
     </div>
   {% endif %}

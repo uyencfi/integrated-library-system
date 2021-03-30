@@ -12,10 +12,10 @@
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}">
             {% include 'includes/form.html' %}
-            {% comment %} <button type="submit" class="btn btn-primary btn-block">Log in</button> {% endcomment %}
-			<div class="d-flex justify-content-center mt-3 login_container">
+            <button class="btn login_btn" type="submit" class="btn btn-primary btn-block">Log in</button>
+			{% comment %} <div class="d-flex justify-content-center mt-3 login_container">
 				<input class="btn login_btn" type="submit" value="Login">
-			</div> 
+			</div>  {% endcomment %}
             <!-- <a href="{% url 'start' %}" class="btn btn-outline-secondary" role="button">Cancel</a> -->
           </form>
         </div>
@@ -24,9 +24,9 @@
         </div>
       </div>
     </div>
-  </div> 
-{% comment %} 
-  {% block content %} {% endcomment %}
+  </div>
+
+  {% comment %} {% block content %}  {% endcomment %}
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -36,13 +36,13 @@
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background: #aad3f0 !important;
+			background: #AED6F1 !important;
 		}
 		.user_card {
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #b8cdff;
+			background: #e9d2d2;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -60,13 +60,13 @@
 		}
 
 		#form-title{
-			color: #fff;
+			color: black;
 			
 		}
 
 		.login_btn {
 			width: 100%;
-			background: #ffc599 !important;
+			background: #e799ffb4 !important;
 			color: white !important;
 		}
 		.login_btn:focus {
@@ -107,7 +107,7 @@
 					<form method="POST" action="">
           				{% csrf_token %}
             			<input type="hidden" name="next" value="{{ next }}">
-						 {% include 'includes/form.html' %}
+						 
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>

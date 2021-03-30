@@ -84,11 +84,11 @@ WSGI_APPLICATION = 'libsys.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ILS',
-        'USER': 'mysql_username',
-        'PASSWORD': 'your_password',
-        'HOST': 'your_host_or_localhost',
-        'PORT': 'port_number',
+        'NAME': 'ils',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '3306',
     },
 }
 

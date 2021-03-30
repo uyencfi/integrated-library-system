@@ -1,41 +1,48 @@
 body {
-  background-color: #b8cdff !important;
-  color: white;
+  background-color: #AED6F1 !important;
+  color: black;
 }
 
 .navbar{
-  color: white;
+  color:black;
   /* background-color: #94c3e4; */
-  background-color: #aad3f0;
+  background-color: #e9d2d2;
 }
 
 .navbar-brand{
   font-family: 'Luminari', fantasy;
-  color: white;
+  color: black;
 }
 
 .btn {
-  border: 2px solid black;
+  border: 2px solid;
 }
 
 .login-btn{
-  background-color: #ffc599;
+  background-color: #e799ffb4;
   color: white;
-  border-color: #ffc599;
+  border-color: #e799ffb4;
 }
 
 .signup-btn{
+  margin-left: 0.2cm;
   color: white;
-  border-color: #ffc599;
+  border-color: #e799ffb4;
 }
 
 .start{
   text-align: center;
-  background-color: #b8cdff;
+  background-color: #AED6F1;
   margin-top: 10%;
-  color: white;
+  color: black;
 }
 
 .title{
+  color: black;
+}
+
+.enter-btn {
+  background-color: #e799ffb4;
   color: white;
+  border-color: #e799ffb4;
 }
