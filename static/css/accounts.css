@@ -1,10 +1,13 @@
 
 body {
-  background-image: url(../img/floor-tile.png);
+  background: #b8cdff!important;
+  color: white;
 }
 
+
 .logo {
-  font-family: 'Liu Jian Mao Cao', cursive;
+  font-family: 'Luminari', fantasy;
+  color: white;
 }
 
 .logo a {

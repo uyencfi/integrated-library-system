@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
+
 {% block title %}My fines{% endblock %}
 
 {% block breadcrumb %}

@@ -1,15 +1,12 @@
-
 {% extends 'base.html' %}
 
 {% load static %}
 
-{% block stylesheet %}
-  <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
-{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
 
 {% block body %}
   <div class="container">
-    <h1 class="text-center logo my-4">
+    <h1 class="logo text-center my-4" >
       Integrated Library System
     </h1>
     {% block content %}

@@ -1,3 +1,41 @@
 body {
-  background-image: url(../img/floor-tile.png);
+  background-color: #b8cdff !important;
+  color: white;
+}
+
+.navbar{
+  color: white;
+  /* background-color: #94c3e4; */
+  background-color: #aad3f0;
+}
+
+.navbar-brand{
+  font-family: 'Luminari', fantasy;
+  color: white;
+}
+
+.btn {
+  border: 2px solid black;
+}
+
+.login-btn{
+  background-color: #ffc599;
+  color: white;
+  border-color: #ffc599;
+}
+
+.signup-btn{
+  color: white;
+  border-color: #ffc599;
+}
+
+.start{
+  text-align: center;
+  background-color: #b8cdff;
+  margin-top: 10%;
+  color: white;
+}
+
+.title{
+  color: white;
 }

@@ -1,8 +1,9 @@
-{% load static %}<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}LibSys{% endblock %}</title>
+    <title>{% block title %}ILS{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'img/read-book.png' %}"/>  
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
@@ -12,7 +13,7 @@
   <body>
     {% block body %}
       <!-- NAVIGATION BAR, Bootstrap 4 Navbar Component -->
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="{% url 'home' %}">Integrated Library System</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">

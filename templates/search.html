@@ -3,6 +3,10 @@
 
 {% load widget_tweaks %}
 
+{% load static %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
+
 {% block title %}Search{% endblock %}
 
 {% block breadcrumb %}
