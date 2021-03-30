@@ -140,7 +140,7 @@ def check_eligibility(user, book):
             msg = "You are already borrowing this book."
         elif book.reserver_id == user:
             msg = "You are already reserving this book."
-        elif book.reserver_id != user:
+        elif book.reserver_id != None:
             msg = "Sorry, this book has been borrowed and reserved."
         else:
             can_r = True
