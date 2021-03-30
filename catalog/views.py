@@ -20,13 +20,17 @@ class BookInfo():
         self.title = b['title']
         self.yearIndex = b['yearIndex']
         self.categories = ", ".join(b['categories'])
-        self.desc = b['shortDescription']
+        # self.desc = b['shortDescription']
         self.authors = ", ".join(b['authors'])
         self.pages = b['pageCount']
         try:
             self.descLong = b['longDescription']
         except KeyError:
             self.descLong = "N.A."
+        try:
+            self.desc = b['shortDescription']
+        except KeyError:
+            self.desc = "N.A."
         try:
             self.isbn = b['isbn']
         except KeyError:
