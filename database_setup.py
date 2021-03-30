@@ -27,7 +27,7 @@ books.create_index([ ("categories", 1) ])
 books.create_index([ ("yearIndex", 1) ])
 
 
-engine = create_engine('mysql+mysqlconnector://root:tittimimi(02112002)@localhost/ils')
+engine = create_engine('mysql+mysqlconnector://mysql_username:mysql_password@localhost/ils')
 connection = engine.connect()
 
 def get_all_id():
